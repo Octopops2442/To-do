@@ -1,0 +1,20 @@
+<%- include("_loginHeader"); -%>
+
+<form action="/task" method="POST">
+  <label>Add Task:</label><br />
+  <input type="text" name="task" /><br /><br />
+  <label>Time:</label>
+  <input type="time" name="time" /><br /><br />
+  <label>Date:</label>
+  <input type="date" name="date" /><br /><br />
+  <input type="submit" />
+</form>
+
+<script>
+  document.getElementById("dashboard").classList.remove("active");
+  document.getElementById("task").classList.remove("active");
+
+  document.getElementById("task").classList.add("active");
+</script>
+
+<%- include("_footer"); -%>
