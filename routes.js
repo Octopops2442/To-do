@@ -118,8 +118,6 @@ router.post("/login", (req, res) => {
         let clientIp = requestIp.getClientIp(req);
 
         activeUsers.push([clientIp, req.body.email]);
-        console.log("The client Ip is :" + clientIp);
-        console.log(activeUsers);
         res.redirect("/dashboard");
       }
     }
@@ -186,12 +184,12 @@ router.get("/logout", (req, res) => {
   let pos = 0;
 
   for (let i = 0; i < activeUsers.length; i++) {
+    console.log(typeof clientIp, typeof activeUsers[0][0]);
     if (clientIp == activeUsers[i][0]) {
       pos = i;
       break;
     }
   }
-  console.log(pos);
   activeUsers = activeUsers.splice(pos, pos);
   console.log(activeUsers);
   res.redirect("/");
