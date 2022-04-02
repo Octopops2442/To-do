@@ -192,6 +192,7 @@ router.get("/logout", (req, res) => {
   }
   activeUsers = activeUsers.splice(pos, pos);
   numUsers--;
+  console.log(activeUsers);
   res.redirect("/");
 });
 
