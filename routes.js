@@ -6,7 +6,6 @@ let user = require("./models/user");
 let task = require("./models/task");
 let requestIp = require("request-ip");
 let activeUsers = [];
-let numUsers = 0;
 
 let checkActiveUser = function (clientIp) {
   for (let i = 0; i < activeUsers.length; i++) {
@@ -118,7 +117,7 @@ router.post("/login", (req, res) => {
       } else {
         let clientIp = requestIp.getClientIp(req);
 
-        activeUsers[numUsers++] = [clientIp, req.body.email];
+        activeUsers.push([clientIp, req.body.email]);
         console.log("The client Ip is :" + clientIp);
         res.redirect("/dashboard");
       }
@@ -192,7 +191,6 @@ router.get("/logout", (req, res) => {
     }
   }
   activeUsers = activeUsers.splice(pos, pos);
-  numUsers--;
   res.redirect("/");
 });
 
