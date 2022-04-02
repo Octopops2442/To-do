@@ -183,7 +183,7 @@ router.get("/logout", (req, res) => {
 
   for (let i = 0; i < activeUsers.length; i++) {
     if (clientIp == activeUsers[i][0]) {
-      console.log(activeUsers[i]);
+      console.log("Inside the loop: " + activeUsers[i]);
       activeUsers = activeUsers.splice(i, i);
       res.redirect("/");
 
