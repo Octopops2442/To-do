@@ -181,18 +181,16 @@ router.post("/signup", async function (req, res) {
 router.get("/logout", (req, res) => {
   let clientIp = requestIp.getClientIp(req);
 
-  let pos = 0;
-
   for (let i = 0; i < activeUsers.length; i++) {
-    console.log(typeof clientIp, typeof activeUsers[0][0]);
+    console.log(clientIp, activeUsers[i][0]);
     if (clientIp == activeUsers[i][0]) {
-      pos = i;
+      activeUsers = activeUsers.splice(i, i);
+      res.redirect("/");
+
       break;
     }
   }
-  activeUsers = activeUsers.splice(pos, pos);
-  console.log(activeUsers);
-  res.redirect("/");
+  // console.log(activeUsers);
 });
 
 module.exports = router;
