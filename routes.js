@@ -191,6 +191,7 @@ router.get("/logout", (req, res) => {
   }
   activeUsers = temp;
   console.log(activeUsers);
+  res.redirect("/");
   // console.log(activeUsers);
 });
 
