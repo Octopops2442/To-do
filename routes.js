@@ -119,6 +119,7 @@ router.post("/login", (req, res) => {
         let clientIp = requestIp.getClientIp(req);
 
         activeUsers[numUsers++] = [clientIp, req.body.email];
+        console.log("The client Ip is :" + clientIp);
         res.redirect("/dashboard");
       }
     }
@@ -192,7 +193,6 @@ router.get("/logout", (req, res) => {
   }
   activeUsers = activeUsers.splice(pos, pos);
   numUsers--;
-  console.log(activeUsers);
   res.redirect("/");
 });
 
