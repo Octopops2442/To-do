@@ -182,8 +182,8 @@ router.get("/logout", (req, res) => {
   let clientIp = requestIp.getClientIp(req);
 
   for (let i = 0; i < activeUsers.length; i++) {
-    console.log(clientIp, activeUsers[i][0]);
     if (clientIp == activeUsers[i][0]) {
+      console.log(activeUsers[i]);
       activeUsers = activeUsers.splice(i, i);
       res.redirect("/");
 
