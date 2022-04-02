@@ -180,16 +180,17 @@ router.post("/signup", async function (req, res) {
 
 router.get("/logout", (req, res) => {
   let clientIp = requestIp.getClientIp(req);
+  let temp = [];
 
   for (let i = 0; i < activeUsers.length; i++) {
     if (clientIp == activeUsers[i][0]) {
-      console.log("Inside the loop: " + activeUsers[i]);
-      activeUsers = activeUsers.splice(i, 1);
-      res.redirect("/");
-
-      break;
+      continue;
+    } else {
+      temp.push(activeUsers[i]);
     }
   }
+  activeUsers = temp;
+  console.log(activeUsers);
   // console.log(activeUsers);
 });
 
